@@ -17,12 +17,12 @@ import HistoryModule from '@common/c9-history/history.module';
 
 import DashboardModule from '@common/c10-dashboard/dashboard.module';
 import SpecializeModule from '@features/f1-specialize/specialize.module';
-import StudentModule from '@features/f1-student/student.module';
-import ClassModule from '@features/f1-class/class.module';
-import FacultiesModule from '@features/f1-faculities/faculities.module';
-import SubjectModule from '@features/f1-subject/subject.module';
-import ResultModule from '@features/f1-result/result.module';
-import TestModule from '@features/f1-test/test.module';
+import StudentModule from '@features/f2-student/student.module';
+import ClassModule from '@features/f3-class/class.module';
+import FacultiesModule from '@features/f4-faculities/faculities.module';
+import SubjectModule from '@features/f5-subject/subject.module';
+import ResultModule from '@features/f6-result/result.module';
+import TestModule from '@features/f7-test/test.module';
 import ProvinceModule from './common/c6-province/province.module';
 import DistrictModule from './common/c7-district/district.module';
 import VillageModule from './common/c8-village/village.module';

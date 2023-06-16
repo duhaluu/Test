@@ -1,8 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import * as mongoose from 'mongoose';
-import { Student } from '../../f1-student/schemas/student.schema';
-import { Subject } from '../../f1-subject/schemas/subject.schema';
+import { Student } from '../../f2-student/schemas/student.schema';
+import { Subject } from '../../f5-subject/schemas/subject.schema';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Result {

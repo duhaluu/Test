@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import * as mongoose from 'mongoose';
-import { Class } from '../../f1-class/schemas/class.schema';
+import { Class } from '../../f3-class/schemas/class.schema';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Student {

@@ -5,13 +5,13 @@ import BaseService from '@base-inherit/base.service';
 import * as mongoose from 'mongoose';
 import * as lodash from 'lodash';
 
-import { StudentDocument, Student } from '@features/f1-student/schemas/student.schema';
-import { ClassDocument, Class } from '@features/f1-class/schemas/class.schema';
-import { FacultiesDocument, Faculties } from '@features/f1-faculities/schemas/faculties.schema';
-import { SubjectDocument, Subject } from '@features/f1-subject/schemas/subject.schema';
-import { ResultDocument, Result } from '@features/f1-result/schemas/result.schema';
-import ClassRepository from '@features/f1-class/Class.repository';
-import ResultRepository from '@features/f1-result/Result.repository';
+import { StudentDocument, Student } from '@features/f2-student/schemas/student.schema';
+import { ClassDocument, Class } from '@features/f3-class/schemas/class.schema';
+import { FacultiesDocument, Faculties } from '@features/f4-faculities/schemas/faculties.schema';
+import { SubjectDocument, Subject } from '@features/f5-subject/schemas/subject.schema';
+import { ResultDocument, Result } from '@features/f6-result/schemas/result.schema';
+import ClassRepository from '@features/f3-class/Class.repository';
+import ResultRepository from '@features/f6-result/Result.repository';
 import TestRepository from './Test.repository';
 
 @Injectable()

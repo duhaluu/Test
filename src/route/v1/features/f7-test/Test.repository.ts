@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 import * as mongoose from 'mongoose';
 
 import BaseRepository from '@base-inherit/base.repository';
-import { StudentDocument, Student } from '@features/f1-student/schemas/student.schema';
+import { StudentDocument, Student } from '@features/f2-student/schemas/student.schema';
 
 @Injectable()
 export default class TestRepository extends BaseRepository<StudentDocument> {
