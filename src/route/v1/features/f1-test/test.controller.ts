@@ -18,18 +18,7 @@ import ParseObjectIdPipe from '@pipe/parse-object-id.pipe';
 import { ApiQueryParams } from '@decorator/api-query-params.decorator';
 import AqpDto from '@interceptor/aqp/aqp.dto';
 import { ApiTags } from '@nestjs/swagger';
-import StudentService from './Student.service';
-import ClassService from './Class.service';
-import FacultiesService from './Faculties.service';
-import SubjectService from './Subject.service';
-import ResultService from './Result.service';
-import UpdateStudentDto from './dto/update-student.dto';
-import CreateStudentDto from './dto/create-student.dto';
-import CreateClassDto from './dto/create-class.dto';
-import UpdateClassDto from './dto/update-class.dto';
-import CreateFacultiesDto from './dto/create-faculities.dto';
-import CreateSubjectDto from './dto/create-subject.dto';
-import CreateResultDt0 from './dto/create-result.dto';
+import TestService from './Test.service';
 
 @ApiTags('')
 @UseInterceptors(WrapResponseInterceptor)
@@ -37,11 +26,7 @@ import CreateResultDt0 from './dto/create-result.dto';
 export default class TestController {
   // eslint-disable-next-line @typescript-eslint/no-shadow
   constructor(
-    private readonly studentService : StudentService,
-    private readonly classService : ClassService,
-    private readonly facultiesService : FacultiesService,
-    private readonly subjectService : SubjectService,
-    private readonly resultService : ResultService,
+    private readonly testService : TestService,
   ) {}
 
   /**
@@ -52,7 +37,7 @@ export default class TestController {
   @Get('cau-1')
   @HttpCode(200)
   async cau1(@Query() query: any): Promise<any> {
-    return this.studentService.exam1(query);
+    return this.testService.exam1(query);
   }
 
    /**
@@ -63,7 +48,7 @@ export default class TestController {
    @Get('cau-2')
    @HttpCode(200)
   async cau2(@Query() query: any): Promise<any> {
-    return this.studentService.exam2();
+    return this.testService.exam2();
   }
 
   /**
@@ -74,7 +59,7 @@ export default class TestController {
   @Get('cau-3')
   @HttpCode(200)
    async cau3(@Query() query: any): Promise<any> {
-     return this.studentService.exam3();
+     return this.testService.exam3();
    }
 
   /**
@@ -85,7 +70,7 @@ export default class TestController {
   @Get('cau-4')
   @HttpCode(200)
   async cau4(@Query() query: any): Promise<any> {
-    return this.studentService.exam4();
+    return this.testService.exam4();
   }
 
   /**
@@ -96,7 +81,7 @@ export default class TestController {
   @Get('cau-5')
   @HttpCode(200)
   async cau5(@Query() query: any): Promise<any> {
-    return this.studentService.exam5();
+    return this.testService.exam5();
   }
 
    /**
@@ -107,7 +92,7 @@ export default class TestController {
    @Get('cau-6')
    @HttpCode(200)
   async cau6(@Query() query: any): Promise<any> {
-    return this.studentService.exam6();
+    return this.testService.exam6();
   }
 
    /**
@@ -118,7 +103,7 @@ export default class TestController {
    @Get('cau-7')
    @HttpCode(200)
    async cau7(@Query() query: any): Promise<any> {
-     return this.studentService.exam7();
+     return this.testService.exam7();
    }
 
     /**
@@ -129,7 +114,7 @@ export default class TestController {
     @Get('cau-8')
     @HttpCode(200)
    async cau8(@Query() query: any): Promise<any> {
-     return this.studentService.exam8();
+     return this.testService.exam8();
    }
 
      /**
@@ -140,7 +125,7 @@ export default class TestController {
      @Get('cau-9')
      @HttpCode(200)
     async cau9(@Query() query: any): Promise<any> {
-      return this.studentService.exam9();
+      return this.testService.exam9();
     }
 
      /**
@@ -151,7 +136,7 @@ export default class TestController {
      @Get('cau-10')
      @HttpCode(200)
      async cau10(@Query() query: any): Promise<any> {
-       return this.studentService.exam10();
+       return this.testService.exam10();
      }
 
      /**
@@ -162,7 +147,7 @@ export default class TestController {
     @Get('cau-11')
     @HttpCode(200)
      async cau11(@Query() query: any): Promise<any> {
-       return this.studentService.exam11();
+       return this.testService.exam11();
      }
 
     /**
@@ -173,7 +158,7 @@ export default class TestController {
     @Get('cau-12')
     @HttpCode(200)
     async cau12(@Query() query: any): Promise<any> {
-      return this.studentService.exam12();
+      return this.testService.exam12();
     }
 
     /**
@@ -184,7 +169,7 @@ export default class TestController {
     @Get('cau-13')
     @HttpCode(200)
     async cau13(@Query() query: any): Promise<any> {
-      return this.studentService.exam13();
+      return this.testService.exam13();
     }
 
     /**
@@ -196,7 +181,7 @@ export default class TestController {
     @HttpCode(200)
 
     async cau14(@Query() query: any): Promise<any> {
-      return this.studentService.exam14();
+      return this.testService.exam14();
     }
 
     /**
@@ -207,7 +192,7 @@ export default class TestController {
     @Get('cau-15')
     @HttpCode(200)
     async cau15(@Query() query: any): Promise<any> {
-      return this.studentService.exam15();
+      return this.testService.exam15();
     }
 
     /**
@@ -218,7 +203,7 @@ export default class TestController {
     @Get('cau-16')
     @HttpCode(200)
     async cau16(@Query() query: any): Promise<any> {
-      return this.studentService.exam16();
+      return this.testService.exam16();
     }
 
     /**
@@ -229,7 +214,7 @@ export default class TestController {
     @Get('cau-17')
     @HttpCode(200)
     async cau17(@Query() query: any): Promise<any> {
-      return this.studentService.exam17();
+      return this.testService.exam17();
     }
 
     /**
@@ -240,7 +225,7 @@ export default class TestController {
     @Get('cau-18')
     @HttpCode(200)
     async cau18(@Query() query: any): Promise<any> {
-      return this.studentService.exam18();
+      return this.testService.exam18();
     }
 
     /**
@@ -251,7 +236,7 @@ export default class TestController {
     @Get('cau-19')
     @HttpCode(200)
     async cau19(@Query() query: any): Promise<any> {
-      return this.studentService.exam19();
+      return this.testService.exam19();
     }
 
     /**
@@ -262,7 +247,7 @@ export default class TestController {
     @Get('cau-20')
     @HttpCode(200)
     async cau20(@Query() query: any): Promise<any> {
-      return this.studentService.exam20();
+      return this.testService.exam20();
     }
 
     /**
@@ -273,7 +258,7 @@ export default class TestController {
     @Get('cau-21')
     @HttpCode(200)
     async cau21(@Query() query: any): Promise<any> {
-      return this.studentService.exam21();
+      return this.testService.exam21();
     }
 
     /**
@@ -284,7 +269,7 @@ export default class TestController {
     @Get('cau-22')
     @HttpCode(200)
     async cau22(@Query() query: any): Promise<any> {
-      return this.studentService.exam2();
+      return this.testService.exam22();
     }
 
     /**
@@ -295,7 +280,7 @@ export default class TestController {
     @Get('cau-23')
     @HttpCode(200)
     async cau23(@Query() query: any): Promise<any> {
-      return this.studentService.exam23();
+      return this.testService.exam23();
     }
 
     /**
@@ -306,7 +291,7 @@ export default class TestController {
     @Get('cau-24')
     @HttpCode(200)
     async cau24(@Query() query: any): Promise<any> {
-      return this.studentService.exam24();
+      return this.testService.exam24();
     }
 
     /**
@@ -317,6 +302,6 @@ export default class TestController {
     @Get('cau-25')
     @HttpCode(200)
     async cau25(@Query() query: any): Promise<any> {
-      return this.studentService.exam25();
+      return this.testService.exam25();
     }
 }

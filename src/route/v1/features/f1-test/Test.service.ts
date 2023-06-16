@@ -1,32 +1,149 @@
-import { PaginateModel, Model } from 'mongoose';
-import { InjectModel } from '@nestjs/mongoose';
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import CustomLoggerService from '@lazy-module/logger/logger.service';
+import BaseService from '@base-inherit/base.service';
 import * as mongoose from 'mongoose';
+import * as lodash from 'lodash';
 
-import BaseRepository from '@base-inherit/base.repository';
-import { StudentDocument, student } from './schemas/student.schema';
-import { ClassDocument, Class } from './schemas/class.schema';
-import { FacultiesDocument, Faculties } from './schemas/faculties.schema';
-import { SubjectDocument, Subject } from './schemas/subject.schema';
-import { ResultDocument, Result } from './schemas/result.schema';
+import { StudentDocument, Student } from '@features/f1-student/schemas/student.schema';
+import { ClassDocument, Class } from '@features/f1-class/schemas/class.schema';
+import { FacultiesDocument, Faculties } from '@features/f1-faculities/schemas/faculties.schema';
+import { SubjectDocument, Subject } from '@features/f1-subject/schemas/subject.schema';
+import { ResultDocument, Result } from '@features/f1-result/schemas/result.schema';
+import ClassRepository from '@features/f1-class/Class.repository';
+import ResultRepository from '@features/f1-result/Result.repository';
+import TestRepository from './Test.repository';
 
 @Injectable()
-export default class ClassStudentRepository extends BaseRepository<StudentDocument> {
+export default class TestService {
   constructor(
-    @InjectModel(student.name) model: PaginateModel<StudentDocument>,
-    @InjectModel(student.name) private studentModel: Model<StudentDocument>,
-    @InjectModel(Class.name) private classModel: Model<ClassDocument>,
-    @InjectModel(Faculties.name) private facultiesModel: Model<FacultiesDocument>,
-    @InjectModel(Subject.name) private subjectModel: Model<SubjectDocument>,
-    @InjectModel(Result.name) private resultModel: Model<ResultDocument>,
+    @InjectModel(Student.name) private studentModel: mongoose.Model<StudentDocument>,
+    @InjectModel(Class.name) private classModel: mongoose.Model<ClassDocument>,
+    @InjectModel(Faculties.name) private facultiesModel: mongoose.Model<FacultiesDocument>,
+    @InjectModel(Subject.name) private subjectModel: mongoose.Model<SubjectDocument>,
+    @InjectModel(Result.name) private resultModel: mongoose.Model<ResultDocument>,
+    readonly logger: CustomLoggerService,
+    readonly testRepository: TestRepository,
+    readonly classRepository : ClassRepository,
+    readonly resultRepository: ResultRepository,
 
   ) {
-    super(model);
     this.classModel = classModel;
     this.studentModel = studentModel;
     this.facultiesModel = facultiesModel;
     this.subjectModel = subjectModel;
     this.resultModel = resultModel;
+  }
+
+  async exam1(query : any): Promise<any> {
+    const customQuery = {
+      filter: query,
+    };
+    return this.classRepository.findManyBy(customQuery);
+  }
+
+  async exam2(): Promise<any> {
+    const customQuery = {
+      projection: {
+        masv: 1,
+        hocBong: 1,
+        hoTen: 1,
+      },
+    };
+    return this.testRepository.findManyBy(customQuery);
+  }
+
+  async exam3(): Promise<any> {
+    const customQuery = {
+      filter: { hocBong: { $gt: 0 } },
+      projection: {
+        masv: 1,
+        hocBong: 1,
+        nu: 1,
+      },
+    };
+    return this.testRepository.findManyBy(customQuery);
+  }
+
+  async exam4(): Promise<any> {
+    const customQuery = {
+      filter: { nu: 'Yes' },
+    };
+    return this.testRepository.findManyBy(customQuery);
+  }
+
+  async exam5(): Promise<any> {
+    const customQuery = {
+      filter: {
+        hoTen: { $regex: '.*Trần.*' },
+      },
+    };
+    return this.testRepository.findManyBy(customQuery);
+  }
+
+  async exam6(): Promise<any> {
+    const customQuery = {
+      filter: {
+        nu: 'Yes',
+        hocBong: { $gt: 0 },
+      },
+    };
+    return this.testRepository.findManyBy(customQuery);
+  }
+
+  async exam7(): Promise<any> {
+    const customQuery = {
+      filter: { $or: [{ nu: 'Yes' }, { hocBong: { $gt: 0 } }] },
+    };
+    return this.testRepository.findManyBy(customQuery);
+  }
+
+  async exam8(): Promise<any> {
+    const customQuery = {
+      filter: {
+        $and: [{ ngaySinh: { $gte: '1978-07-08T17:00:00.000Z' } }, { ngaySinh: { $lte: '1985-07-08T17:00:00.000Z' } }],
+      },
+    };
+    return this.testRepository.findManyBy(customQuery);
+  }
+
+  async exam9(): Promise<any> {
+    const customQuery = {
+      sort: {
+        masv: 1,
+      },
+    };
+    return this.testRepository.findManyBy(customQuery);
+  }
+
+  async exam10(): Promise<any> {
+    const customQuery = {
+      sort: {
+        hocBong: -1,
+      },
+    };
+    return this.testRepository.findManyBy(customQuery);
+  }
+
+  async exam11(): Promise<any> {
+    const customQuery = {
+      filter: {
+        $and: [{ maMH: '64898c93b1fe9ba149d5c192' }, { diemThi: { $gte: 8 } }],
+      },
+      projection: {
+        masv: 1,
+      },
+    };
+    let Results = await this.resultRepository.findManyBy(customQuery);
+    Results = lodash.map(Results, (result) => result.masv);
+    const student = await this.testRepository.findManyBy({
+      filter: {
+        _id: {
+          $in: Results,
+        },
+      },
+    });
+    return student;
   }
 
   async exam12(): Promise<any[]> {
@@ -333,6 +450,15 @@ export default class ClassStudentRepository extends BaseRepository<StudentDocume
     ]);
   }
 
+  async exam22(): Promise<any> {
+    const customQuery = {
+      sort: {
+        hocBong: -1,
+      },
+    };
+    return lodash.head(await this.testRepository.findManyBy(customQuery));
+  }
+
   async exam23(): Promise<any[]> {
     return this.studentModel.aggregate([
       {
@@ -359,6 +485,28 @@ export default class ClassStudentRepository extends BaseRepository<StudentDocume
         $limit: 1,
       },
     ]);
+  }
+
+  async exam24(): Promise<any> {
+    const customQuery = {
+      filter: {
+        maMH: { $nin: ['64898c93b1fe9ba149d5c192'] },
+      },
+      projection: {
+        masv: 1,
+      },
+    };
+    let results = await this.resultRepository.findManyBy(customQuery);
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    results = lodash.map(results, (result) => result.masv);
+    const student = await this.resultRepository.findManyBy({
+      filter: {
+        _id: {
+          $in: results,
+        },
+      },
+    });
+    return student;
   }
 
   async exam25(): Promise<any[]> {

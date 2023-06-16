@@ -3,12 +3,12 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Injectable } from '@nestjs/common';
 
 import BaseRepository from '@base-inherit/base.repository';
-import { ClassDocument, Class } from './schemas/class.schema';
+import { FacultiesDocument, Faculties } from './schemas/faculties.schema';
 
 @Injectable()
-export default class ClassStudentRepository extends BaseRepository<ClassDocument> {
+export default class FacultiesRepository extends BaseRepository<FacultiesDocument> {
   constructor(
-    @InjectModel(Class.name) model: PaginateModel<ClassDocument>,
+    @InjectModel(Faculties.name) model: PaginateModel<FacultiesDocument>,
   ) {
     super(model);
   }

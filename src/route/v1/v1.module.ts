@@ -17,7 +17,12 @@ import HistoryModule from '@common/c9-history/history.module';
 
 import DashboardModule from '@common/c10-dashboard/dashboard.module';
 import SpecializeModule from '@features/f1-specialize/specialize.module';
-import ClassStudentModule from '@features/f1-classStudent/classStudent.module';
+import StudentModule from '@features/f1-student/student.module';
+import ClassModule from '@features/f1-class/class.module';
+import FacultiesModule from '@features/f1-faculities/faculities.module';
+import SubjectModule from '@features/f1-subject/subject.module';
+import ResultModule from '@features/f1-result/result.module';
+import TestModule from '@features/f1-test/test.module';
 import ProvinceModule from './common/c6-province/province.module';
 import DistrictModule from './common/c7-district/district.module';
 import VillageModule from './common/c8-village/village.module';
@@ -54,7 +59,13 @@ const routes: Routes = [
 
       // Features
       { path: '/specializes', module: SpecializeModule },
-      { path: '/exam', module: ClassStudentModule },
+      { path: '/sinh-viens', module: StudentModule },
+      { path: '/lops', module: ClassModule },
+      { path: '/khoas', module: FacultiesModule },
+      { path: '/mon-hocs', module: SubjectModule },
+      { path: '/ket-quas', module: ResultModule },
+      { path: '/cau-hoi', module: TestModule },
+
     ],
   },
 ];
@@ -91,7 +102,12 @@ const imports = [
 
   // features
   SpecializeModule,
-  ClassStudentModule,
+  StudentModule,
+  ClassModule,
+  FacultiesModule,
+  SubjectModule,
+  ResultModule,
+  TestModule,
 ];
 
 if (ShareFunction.checkIsConfigS3Storage()) {

@@ -1,13 +1,13 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import * as mongoose from 'mongoose';
-import { student } from './student.schema';
-import { Subject } from './subject.schema';
+import { Student } from '../../f1-student/schemas/student.schema';
+import { Subject } from '../../f1-subject/schemas/subject.schema';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Result {
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'student' })
-  masv: student;
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Student' })
+  masv: Student;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Subject' })
   maMH: Subject;

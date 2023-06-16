@@ -6,7 +6,7 @@ import { FacultiesDocument } from './schemas/faculties.schema';
 import FacultiesRepository from './Faculties.repository';
 
 @Injectable()
-export default class ClassService extends BaseService<FacultiesDocument> {
+export default class FacultiesService extends BaseService<FacultiesDocument> {
   constructor(
     readonly logger: CustomLoggerService,
     readonly facultiesRepository: FacultiesRepository,

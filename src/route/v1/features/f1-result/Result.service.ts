@@ -6,7 +6,7 @@ import { ResultDocument } from './schemas/result.schema';
 import ResultRepository from './Result.repository';
 
 @Injectable()
-export default class SubjectService extends BaseService<ResultDocument> {
+export default class ResultService extends BaseService<ResultDocument> {
   constructor(
     readonly logger: CustomLoggerService,
     readonly resultRepository: ResultRepository,
